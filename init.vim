@@ -1,38 +1,37 @@
 set visualbell
 
-"dein Scripts-----------------------------
+" dein Scripts-----------------------------
 if &compatible
-  set nocompatible               " Be iMproved
+  set nocompatible
 endif
 
 " Required:
-set runtimepath+=/home/ekanayc/.config/nvim/bundle/repos/github.com/Shougo/dein.vim
+let init_path = expand('<sfile>:p:h')
+let bundle_path = init_path . '/bundle'
+let dein_path =  bundle_path . '/repos/github.com/Shougo/dein.vim'
+let &runtimepath .= ',' . dein_path 
 
 " Required:
-if dein#load_state('/home/ekanayc/.config/nvim/bundle')
-	call dein#begin('/home/ekanayc/.config/nvim/bundle')
+if dein#load_state(dein_path)
+    call dein#begin(dein_path)
 
-      	" Let dein manage dein
-	" Required:
-        call dein#add('/home/ekanayc/.config/nvim/bundle/repos/github.com/Shougo/dein.vim')
+    " Let dein manage dein
+    " Required:
+    call dein#add(dein_path)
 
-        " Add or remove your plugins here:
-	call dein#add('scrooloose/nerdtree', { 'on_cmd': 'NERDTreeToggle' })
-	call dein#add('Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'})
-        call dein#add('Shougo/neosnippet.vim')
-        call dein#add('Shougo/neosnippet-snippets')
-	call dein#add('Shougo/denite.nvim')
-	call dein#add('chemzqm/vim-easygit')
-	call dein#add('chemzqm/denite-git')
-	
-	" You can specify revision/branch/tag.
-	call dein#add('Shougo/deol.nvim', { 'rev': '01203d4c9' })
+    " Add or remove your plugins here:
+    call dein#add('Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'})
+    call dein#add('Shougo/denite.nvim')
 
-	call dein#add('artur-shaik/vim-javacomplete2')
+    call dein#add('scrooloose/nerdtree', { 'on_cmd': 'NERDTreeToggle' })
+    call dein#add('Shougo/neosnippet.vim')
+    call dein#add('Shougo/neosnippet-snippets')
 
-        " Required:
-        call dein#end()
-        call dein#save_state()
+    call dein#add('cocopon/iceberg.vim')
+
+    " Required:
+    call dein#end()
+    call dein#save_state()
 endif
 
 " Required:
@@ -43,8 +42,12 @@ if dein#check_install()
   call dein#install()
 endif
 
-" deoplete
+" deoplete ----
 let g:deoplete#enable_at_startup = 1
 
-" javacomplete2
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
+" color scheme ----
+colorscheme iceberg
+
+" tab spaces ----
+:set tabstop=4 shiftwidth=4 expandtab
+
