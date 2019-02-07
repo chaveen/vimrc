@@ -1,6 +1,9 @@
 " not in insert mode
 set noim
 
+"no swap files
+set noswapfile
+
 " disable error sounds
 set visualbell
 
@@ -9,19 +12,10 @@ if &compatible
   set nocompatible
 endif
 
-" enable black slash for paths
-if exists('+shellslash')
-    set shellslash
-endif
-
 " number
 set number
 
-" Required:
-filetype plugin indent on
-syntax enable
-
-
 " tab spaces ----
 set tabstop=4 shiftwidth=4 expandtab
+
 
