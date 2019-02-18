@@ -3,3 +3,6 @@ plugged/
 installer.sh
 **/*.swp
 **/*~
+.netrwhist
+.netrwhist
+plugins/bundle/
